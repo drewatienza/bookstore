@@ -1,14 +1,9 @@
-const http = require('http');
+const express = require('express');
 
-const server = http.createServer();
+const app = express();
 
-server.on('request', (req, res) => {
-  res.write('Hello Node\n');
+app.use(express.static('client'));
+// app.get('/', (req, res) => {
+// });
 
-  setTimeout(() => {
-    res.write("Still on. ....");
-    res.end();
-  }, 3000);
-});
-
-server.listen(8080);
+app.listen(8080);
