@@ -1,14 +1,10 @@
-// const App = () => {
-//   return (
-//     <h2>Hello components</h2>
-//   );
-// };
+import BookList from './BookList';
 
 class App extends React.Component {
   state = { answer: 42 };
   render() {
     return (
-      <h2>Hello components {this.state.answer}</h2>
+      <BookList />
     );
   }
 }
