@@ -1,4 +1,6 @@
-ReactDOM (
-  <h2>Hello JSX</h2>,
-  document.getElementById("root")
+import App from './components/App';
+
+ReactDOM.render (
+  <App />,
+  document.getElementById('root')
 );
