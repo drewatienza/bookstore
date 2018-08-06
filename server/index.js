@@ -17,4 +17,4 @@ app.get('/', (req, res) => {
 
 app.use('/api', apiRouter);
 
-app.listen(8080, () => console.log('server is running ...'));
+app.listen(8080, '0.0.0.0', () => console.log('server is running ...'));

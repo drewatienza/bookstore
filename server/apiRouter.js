@@ -1,7 +1,11 @@
 const pg = require('pg');
 
 const pool = new pg.Pool({
-  database: 'books-dev'
+  database: 'd4r7hatd5pec86',
+  user: 'fauvejfdpbmard',
+  password: '4901f05eac8efa82705d38ff66b9805dc6b011c87164db6a99973df9497335e8',
+  host: 'ec2-23-23-216-40.compute-1.amazonaws.com',
+  ssl: true
 });
 
 const express = require('express');
