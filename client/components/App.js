@@ -8,7 +8,15 @@ class App extends React.Component {
     ratings: {}
   };
   fetchRatingForBook = (bookId) => {
-    console.log(bookId);
+    if (this.state.ratings[bookId])  { return; }
+    axios.get(`http://localhost:8080/api/books/${bookId}/ratings`)
+      .then(resp => {
+        this.setState((prevState) => {
+          const currentRatings = prevState.ratings;
+          currentRatings[bookId] = resp.data;
+          return { ratings: currentRatings };
+        })
+      })
   }
   render() {
     return (
