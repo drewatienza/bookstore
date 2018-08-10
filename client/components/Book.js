@@ -6,6 +6,7 @@ const Book = (props) => {
       <div>{props.title}</div>
       <div>{props.author}</div>
       <div>{props.price}</div>
+      <div>{props.rating}</div>
     </div>
   );
 }
