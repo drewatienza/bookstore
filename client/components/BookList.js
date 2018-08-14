@@ -1,16 +1,15 @@
 const React = require('react');
 
-import Book from './Book';
+import BookItem from './BookItem';
 
 const BookList = (props) => {
-  // props.onBookClick()
   return (
     <div>
       {props.books.map(book =>
-        <Book
+        <BookItem
           key={book.id}
           rating={props.calcRatingForBook(book.id)}
-          onClick={props.onBookClick}
+          onRatingClick={props.onBookClick}
           {...book}
         />
       )}

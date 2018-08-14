@@ -5,7 +5,10 @@ import axios from 'axios';
 class App extends React.Component {
   state = {
     books: this.props.initialData,
-    ratings: {}
+    ratings: {
+
+    },
+    currentBookId: 5,
   };
   fetchRatingForBook = (bookId) => {
     if (this.state.ratings[bookId])  { return; }
@@ -18,6 +21,9 @@ class App extends React.Component {
         })
       })
   }
+  showBookPage = (bookId) => {
+    // this.setState({})
+  }
   calcRatingForBook = (bookId) => {
     const ratings = this.state.ratings[bookId];
     if (!ratings || ratings.length === 0) { return; }
@@ -27,11 +33,17 @@ class App extends React.Component {
   }
   render() {
     return (
-      <BookList
-        books={this.state.books}
-        calcRatingForBook={this.calcRatingForBook}
-        onBookClick={this.fetchRatingForBook}
-      />
+      <div>
+        {
+          this.state.currentBookId ?
+          <div>One Book Coming Soon</div> :
+          <BookList
+            books={this.state.books}
+            calcRatingForBook={this.calcRatingForBook}
+            onBookClick={this.fetchRatingForBook}
+          />
+        }
+      </div>
     );
   }
 }
