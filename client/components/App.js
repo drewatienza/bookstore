@@ -1,14 +1,13 @@
 const React = require('react');
 import BookList from './BookList';
+import Book from './Book';
 import axios from 'axios';
 
 class App extends React.Component {
   state = {
     books: this.props.initialData,
-    ratings: {
-
-    },
-    currentBookId: 5,
+    ratings: {},
+    currentBookId: null,
   };
   fetchRatingForBook = (bookId) => {
     if (this.state.ratings[bookId])  { return; }
@@ -22,7 +21,12 @@ class App extends React.Component {
       })
   }
   showBookPage = (bookId) => {
-    // this.setState({})
+    history.pushState(
+      { currentBookId: bookId},
+      "",
+      `/books/${bookId}`
+    );
+    this.setState({ currentBookId: bookId });
   }
   calcRatingForBook = (bookId) => {
     const ratings = this.state.ratings[bookId];
@@ -36,9 +40,10 @@ class App extends React.Component {
       <div>
         {
           this.state.currentBookId ?
-          <div>One Book Coming Soon</div> :
+          <Book {...this.state.books.find(item => item.id === this.state.currentBookId)} /> :
           <BookList
             books={this.state.books}
+            onTitleClick={this.showBookPage}
             calcRatingForBook={this.calcRatingForBook}
             onBookClick={this.fetchRatingForBook}
           />
