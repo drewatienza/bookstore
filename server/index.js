@@ -9,9 +9,9 @@ app.set('view engine', 'ejs');
 import serverRender from './render';
 import apiRouter from './apiRouter';
 
-app.get('/', (req, res) => {
+app.get(['/', '/books/:bookId'], (req, res) => {
 
-  serverRender().then(renderData =>
+  serverRender(req.params.bookId).then(renderData =>
     res.render('index', {
       markup: renderData.markup,
       initialData: renderData.data,
